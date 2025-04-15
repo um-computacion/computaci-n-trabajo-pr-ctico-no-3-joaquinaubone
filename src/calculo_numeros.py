@@ -1,20 +1,19 @@
-from exceptions import ingrese_numero
+# src/calculo_numeros.py
+
+from src.exceptions import ingrese_numero, NumeroDebeSerPositivo
 
 def main():
-    """
-    Programa principal que solicita números al usuario y muestra los resultados.
-    """
     while True:
         try:
             numero = ingrese_numero()
             print(f"Número válido: {numero}")
-        except ValueError as e:
-            print(f"Error: {e}")
-        except NumeroDebeSerPositivo as e:
-            print(f"Error: {e}")
+        except NumeroDebeSerPositivo:
+            print("Error: El número debe ser positivo")
+        except ValueError:
+            print("Error: La entrada debe ser un número válido")
         except KeyboardInterrupt:
-            print("\nPrograma finalizado.")
+            print("\nSaliendo del programa...")
             break
 
 if __name__ == "__main__":
-    main() 
+    main()
